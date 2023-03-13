@@ -14,6 +14,7 @@ namespace Layout_App
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RGB_Page : ContentPage
     {
+        Label redLabel, greenLabel, blueLabel;
         BoxView box;
         Slider redSlider, greenSlider, blueSlider;
 
@@ -36,6 +37,7 @@ namespace Layout_App
                 Value = 255,
 
             };
+            redSlider.ValueChanged += RedSlider_ValueChanged;
             greenSlider = new Slider
             {
                 Minimum = 0,
@@ -51,14 +53,18 @@ namespace Layout_App
 
             };
 
-            AbsoluteLayout abs = new AbsoluteLayout { Children = { redSlider, greenSlider, blueSlider, box} };
-            AbsoluteLayout.SetLayoutBounds(redSlider, new Rectangle(0.3, 0.5, 300, 100));
-            AbsoluteLayout.SetLayoutFlags(redSlider, AbsoluteLayoutFlags.PositionProportional);
-            AbsoluteLayout.SetLayoutBounds(greenSlider, new Rectangle(0.3, 0.6, 300, 100));
-            AbsoluteLayout.SetLayoutFlags(greenSlider, AbsoluteLayoutFlags.PositionProportional);
-            AbsoluteLayout.SetLayoutBounds(blueSlider, new Rectangle(0.3, 0.7, 300, 100));
-            AbsoluteLayout.SetLayoutFlags(blueSlider, AbsoluteLayoutFlags.PositionProportional);
-            Content = abs;
+
+            redLabel = new Label { Text = "Red = ", HorizontalOptions = LayoutOptions.Center };
+            greenLabel = new Label { Text = "Green = ", HorizontalOptions = LayoutOptions.Center };
+            blueLabel = new Label { Text = "Blue = ", HorizontalOptions = LayoutOptions.Center };
+
+            StackLayout st = new StackLayout { Children = { box, redSlider, greenSlider, blueSlider, redLabel, greenLabel, blueLabel} };
+            Content = st;
+        }
+
+        private void RedSlider_ValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void Sld_ValueChanged(object sender, ValueChangedEventArgs e)
