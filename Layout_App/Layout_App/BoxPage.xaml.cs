@@ -22,7 +22,7 @@ namespace Layout_App
             {
                 Color = Color.FromRgb(r, g, b),
                 CornerRadius = 20,
-                WidthRequest= 200, HeightRequest= 500,
+                WidthRequest= 200, HeightRequest= 300,
                 HorizontalOptions= LayoutOptions.Center,
                 VerticalOptions= LayoutOptions.Center
             };

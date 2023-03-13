@@ -5,7 +5,7 @@
     <ContentPage.Content>
         <StackLayout>
             <Label  x:Name="lbl"
-                Text="Welcome to Xamarin.Forms!"
+                Text="Frogus"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand"
                 BackgroundColor="Bisque"
@@ -15,7 +15,7 @@
                 </Label.GestureRecognizers>
             </Label>
             <Button x:Name="Tagasi_btn"
-                    Text="tagasi_btn"
+                    Text="Tagasi"
                     FontSize="Subtitle"
                     Clicked="Tagasi_btn_Clicked">
             </Button>
