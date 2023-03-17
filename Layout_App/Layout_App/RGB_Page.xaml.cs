@@ -26,7 +26,7 @@ namespace Layout_App
             redLbl = new Label { Text = "Red = ", HorizontalOptions = LayoutOptions.Center };
             greenLbl = new Label { Text = "Green = ", HorizontalOptions = LayoutOptions.Center };
             blueLbl = new Label { Text = "Blue = ", HorizontalOptions = LayoutOptions.Center };
-            alphalbl = new Label { Text = "Alpha = ", HorizontalOptions = LayoutOptions.Center };
+            alphalbl = new Label { Text = "Прозрачность = ", HorizontalOptions = LayoutOptions.Center };
 
             box = new BoxView()
             {
