@@ -46,7 +46,7 @@ namespace Layout_App
             Redframe = new Frame
             {
                 Content = Redlabel,
-                BackgroundColor = Color.LightPink,
+                BackgroundColor = Color.Gray,
                 CornerRadius = 100,
                 WidthRequest = 200,
                 HeightRequest = 200,
@@ -59,7 +59,7 @@ namespace Layout_App
             {
                 Content = Yellowlabel,
 
-                BackgroundColor = Color.LightGoldenrodYellow,
+                BackgroundColor = Color.Gray,
                 CornerRadius = 100,
                 WidthRequest = 200,
                 HeightRequest = 200,
@@ -71,7 +71,7 @@ namespace Layout_App
             Greenframe = new Frame
             {
                 Content = Greenlabel,
-                BackgroundColor = Color.LightGreen,
+                BackgroundColor = Color.Gray,
                 CornerRadius = 100,
                 WidthRequest = 200,
                 HeightRequest = 200,
@@ -126,7 +126,7 @@ namespace Layout_App
                 {
                     Greenlabel.Text = "Едьте";
                 }
-                else if (Greenframe.BackgroundColor == Color.LightGreen)
+                else if (Greenframe.BackgroundColor == Color.Gray)
                 {
                     Greenlabel.Text = "Зеленый";
                 }
@@ -146,7 +146,7 @@ namespace Layout_App
                 {
                     Yellowlabel.Text = "Готовьтесь";
                 }
-                else if (Yellowframe.BackgroundColor == Color.LightGoldenrodYellow)
+                else if (Yellowframe.BackgroundColor == Color.Gray)
                 {
                     Yellowlabel.Text = "Желтый";
                 }
@@ -166,7 +166,7 @@ namespace Layout_App
                 {
                     Redlabel.Text = "Стоп";
                 }
-                else if (Redframe.BackgroundColor == Color.LightPink)
+                else if (Redframe.BackgroundColor == Color.Gray)
                 {
                     Redlabel.Text = "Красный";
                 }
@@ -226,29 +226,29 @@ namespace Layout_App
                 Redframe.BackgroundColor = Color.Red;
                 await Task.Delay(3000);
 
-                Redframe.BackgroundColor = Color.LightPink;
+                Redframe.BackgroundColor = Color.Gray;
                 Yellowframe.BackgroundColor = Color.Yellow;
                 Yellowlabel.TextColor = Color.Black;
                 await Task.Delay(2000);
 
                 Yellowlabel.TextColor = Color.White;
-                Yellowframe.BackgroundColor = Color.LightGoldenrodYellow;
+                Yellowframe.BackgroundColor = Color.Gray;
                 Greenframe.BackgroundColor = Color.Green;
                 await Task.Delay(3000);
 
-                Greenframe.BackgroundColor = Color.LightGreen;
+                Greenframe.BackgroundColor = Color.Gray;
                 await Task.Delay(500);
 
                 Greenframe.BackgroundColor = Color.Green;
                 await Task.Delay(500);
 
-                Greenframe.BackgroundColor = Color.LightGreen;
+                Greenframe.BackgroundColor = Color.Gray;
                 await Task.Delay(500);
 
                 Greenframe.BackgroundColor = Color.Green;
                 await Task.Delay(500);
 
-                Greenframe.BackgroundColor = Color.LightGreen;
+                Greenframe.BackgroundColor = Color.Gray;
             }
 
         }
