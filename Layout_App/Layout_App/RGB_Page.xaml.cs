@@ -14,66 +14,115 @@ namespace Layout_App
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RGB_Page : ContentPage
     {
-        Label redLabel, greenLabel, blueLabel;
+        Label redLbl, greenLbl, blueLbl, alphalbl;
+        Slider redSld, greenSld, blueSld;
+        Stepper alphaStp;
+
+        Xamarin.Forms.Button btn;
         BoxView box;
-        Slider redSlider, greenSlider, blueSlider;
 
         public RGB_Page()
         {
-            int r = 0, g = 0, b = 0;
-            box = new BoxView
+            redLbl = new Label { Text = "Red = ", HorizontalOptions = LayoutOptions.Center };
+            greenLbl = new Label { Text = "Green = ", HorizontalOptions = LayoutOptions.Center };
+            blueLbl = new Label { Text = "Blue = ", HorizontalOptions = LayoutOptions.Center };
+            alphalbl = new Label { Text = "Alpha = ", HorizontalOptions = LayoutOptions.Center };
+
+            box = new BoxView()
             {
-                Color = Color.FromRgb(r, g, b),
-                CornerRadius = 0,
+                Color = Color.Black,
                 WidthRequest = 300,
                 HeightRequest = 300,
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.Center
             };
-            redSlider = new Slider
+
+            redSld = new Slider
             {
                 Minimum = 0,
                 Maximum = 255,
-                Value = 255,
+                Value = 120,
 
+                MinimumTrackColor = Color.LightPink,
+                MaximumTrackColor = Color.Red,
             };
-            redSlider.ValueChanged += RedSlider_ValueChanged;
-            greenSlider = new Slider
+
+            redSld.ValueChanged += OnSlideValueChanged;
+
+            greenSld = new Slider
             {
                 Minimum = 0,
                 Maximum = 255,
-                Value = 255,
+                Value = 120,
 
+                MinimumTrackColor = Color.LightGreen,
+                MaximumTrackColor = Color.Green,
             };
-            blueSlider = new Slider
+            greenSld.ValueChanged += OnSlideValueChanged;
+
+            blueSld = new Slider
             {
                 Minimum = 0,
                 Maximum = 255,
-                Value = 255,
-
+                Value = 120,
+                MinimumTrackColor = Color.LightBlue,
+                MaximumTrackColor = Color.Blue
             };
+            blueSld.ValueChanged += OnSlideValueChanged;
 
+            alphaStp = new Stepper
+            {
+                Minimum = 0,
+                Maximum = 255,
+                Increment = 5,
+                Value = 255,
+                HorizontalOptions = LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.EndAndExpand
+            };
+            alphaStp.ValueChanged += OnSlideValueChanged;
 
-            redLabel = new Label { Text = "Red = ", HorizontalOptions = LayoutOptions.Center };
-            greenLabel = new Label { Text = "Green = ", HorizontalOptions = LayoutOptions.Center };
-            blueLabel = new Label { Text = "Blue = ", HorizontalOptions = LayoutOptions.Center };
+            btn = new Xamarin.Forms.Button
+            {
+                Text = "Random",
+            };
+            btn.Clicked += Btn_Clicked;
 
-            StackLayout st = new StackLayout { Children = { box, redSlider, greenSlider, blueSlider, redLabel, greenLabel, blueLabel} };
+            StackLayout st = new StackLayout { Children = { box, redSld, redLbl, greenSld, greenLbl, blueSld, blueLbl, alphaStp, alphalbl, btn } };
             Content = st;
         }
 
-        private void RedSlider_ValueChanged(object sender, ValueChangedEventArgs e)
+        private void Btn_Clicked(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            Random rnd = new Random();
+            box.Color = Color.FromRgb(rnd.Next(0, 255), rnd.Next(0, 255), rnd.Next(0, 255));
+            redSld.Value= rnd.Next(0, 255);
+            greenSld.Value= rnd.Next(0, 255);
+            blueSld.Value= rnd.Next(0, 255);
         }
 
-        private void Sld_ValueChanged(object sender, ValueChangedEventArgs e)
+        private void OnSlideValueChanged(object sender, ValueChangedEventArgs e)
         {
+            if (sender == redSld)
+            {
+                redLbl.Text = String.Format("Red = {0:X2}", (int)e.NewValue);
+            }
+            else if (sender == greenSld)
+            {
+                greenLbl.Text = String.Format("Green = {0:X2}", (int)e.NewValue);
+            }
+            else if (sender == blueSld)
+            {
+                blueLbl.Text = String.Format("Blue = {0:X2}", (int)e.NewValue);
+            }
+            else if (sender == alphaStp)
+            {
+                alphalbl.Text = String.Format("Прозрачность = {0:X2}", (int)e.NewValue);
+            }
 
-            box.Color = Color.FromRgb(
-                (int)redSlider.Value,
-                (int)greenSlider.Value,
-                (int)blueSlider.Value);
+            box.Color = Color.FromRgba((int)redSld.Value,
+                                      (int)greenSld.Value,
+                                      (int)blueSld.Value,
+                                      (int)alphaStp.Value);
         }
     }
 }
