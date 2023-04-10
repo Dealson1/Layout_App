@@ -12,11 +12,12 @@ namespace Layout_App
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class StartPage : ContentPage
     {
-        List<ContentPage> pages = new List<ContentPage>() { new EditorPage(), new TimerPage(), new BoxPage(), new DateTimePage(), new StepperSliderPage(),new Valgusfoor(), new RGB_Page(), new Frame_Page(), new Image_Page(), new PickerPage(), new TablePage() };
+        List<ContentPage> pages = new List<ContentPage>() { new EditorPage(), new TimerPage(), new BoxPage(), new DateTimePage(), new StepperSliderPage(),new Valgusfoor(), new RGB_Page(), new Frame_Page(), new Image_Page(), new PickerPage(), new TablePage(), new Failid() };
 
-        List<string> texts = new List<string> { "Editor Page", "Timer Page", "BoxView Page", "Date/TimePage", "Stepper-Slider Page", "Valgusfoor", "RGB Page", "Frame", "Image", "Picker", "Table" };
+        List<string> texts = new List<string> { "Editor Page", "Timer Page", "BoxView Page", "Date/TimePage", "Stepper-Slider Page", "Valgusfoor", "RGB Page", "Frame", "Image", "Picker", "Table", "Failid" };
 
         Random random= new Random();
+        StackLayout st;
         public StartPage()
         {
 
@@ -32,7 +33,8 @@ namespace Layout_App
                 st.Children.Add(button);
                 button.Clicked += Button_Clicked;
             }
-            Content= st;
+            ScrollView scrollView= new ScrollView { Content = st };
+            Content= scrollView;
 
         }
 
